@@ -1,0 +1,18 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+public static class Extension
+{
+    public static Stack<T> ListToRandomizedStack<T>(this Stack<T> source)
+    {
+        Stack<T> target = new Stack<T>();
+        var orderedEnumerable = source.ToList().OrderBy(a => Guid.NewGuid());
+        foreach (T item in orderedEnumerable)
+        {
+            target.Push(item);
+        }
+        return target;
+    }
+}
